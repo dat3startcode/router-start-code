@@ -23,9 +23,9 @@ ul.header {
  .active { background-color: #4CAF50;}
  
  ```
- ### 2) Create a new file bookFactory.js and add the following content to the file
+ ### 2) Create a new file bookFacade.js and add the following content to the file
   ```
- function bookFactory() {
+ function bookFacade() {
   let books = [
       { id: 100,title: "How to Learn JavaScript - Vol 1", info: "Study hard"},
       { id: 101,title: "How to Learn ES6", info: "Complete all exercises :-)"},
@@ -58,18 +58,18 @@ ul.header {
   }
 }
 
-let returnVal =  bookFactory()
+let returnVal =  bookFacade()
 export default returnVal;
  ```
  ### 3) In index.js remove EVERYTHING below `import App from "./App"` and add this code
 ```
-import bookFactory from "./bookFactory";
+import bookFacade from "./bookFacade";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const AppWithRouter = () => {
   return (
     <Router>
-      <App bookFactory={bookFactory} />
+      <App bookFacade={bookFacade} />
     </Router>
   );
 };
