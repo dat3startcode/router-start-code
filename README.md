@@ -61,18 +61,23 @@ ul.header {
 let returnVal =  bookFacade()
 export default returnVal;
  ```
- ### 3) In index.js remove EVERYTHING below `import App from "./App"` and add this code
+ ### 3) In main.js setup App with bookFacade:
 ```
-import bookFacade from "./bookFacade";
-import { BrowserRouter as Router } from "react-router-dom";
+import { 
+RouterProvider, 
+createBrowserRouter,
+createRoutesFromElements,
+Route, } from 'react-router-dom'
 
-const AppWithRouter = () => {
-  return (
-    <Router>
-      <App bookFacade={bookFacade} />
-    </Router>
-  );
-};
-ReactDOM.render(<AppWithRouter />, document.getElementById("root"));
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path="/" element={<App bookFacade={bookFacade}/>} />
+    
+));
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
+)
  ``` 
 ### Don't continue before you know exactly what happens in the code given in 2+3 (observe how the `bookFacade` is passed into `App` as props)
